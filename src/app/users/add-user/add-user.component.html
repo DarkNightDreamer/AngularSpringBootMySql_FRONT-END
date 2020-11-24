@@ -1,0 +1,44 @@
+<br>
+  <span class="ui-float-label">
+    <input id="float-input" type="text" [(ngModel)]="user.nom" required #nom="ngModel" size="30" pInputText>
+    <label for="float-input">NOM</label>
+    <p-message severity="error" *ngIf="nom.invalid && (nom.touched || nom.dirty)"
+               [text]="nom.errors['required']?'Nom requis' :''"></p-message>
+</span><br>
+  <span class="ui-float-label">
+    <input id="float-input2" [(ngModel)]="user.prenom" type="text" required #prenom="ngModel" size="30" pInputText>
+    <label for="float-input">Prenom</label>
+    <p-message severity="error" *ngIf="prenom.invalid && (prenom.touched || prenom.dirty)"
+               [text]="nom.errors['required']?'prenom requis' :''"></p-message>
+</span><br>
+  <span class="ui-float-label">
+    <input id="float-input3" type="text" pKeyFilter="email" [(ngModel)]="user.email" required email #email="ngModel" size="30" pInputText>
+    <label for="float-input">Email</label>
+    <p-message severity="error" *ngIf="email.invalid && (email.touched || email.dirty)"
+               [text]="email.errors['required']?'email requis' :email.errors['email']?' Email invalid' :''"></p-message>
+</span><br>
+
+<span class="ui-float-label">
+    <input id="float-input4" [(ngModel)]="user.username" required #username="ngModel" type="text" size="30" pInputText>
+    <label for="float-input">Username</label>
+  <p-message severity="error" *ngIf="username.invalid && (username.touched || username.dirty)"
+             [text]="username.errors['required']?'username requis' :''"></p-message>
+</span><br>
+<div [hidden]="!visible">
+<span class="ui-float-label">
+    <input id="float-input5" [(ngModel)]="user.password"  required #password="ngModel" type="password" size="30" pPassword>
+    <label for="float-input">Password</label>
+<p-message severity="error" *ngIf="password.invalid && (password.touched || password.dirty)"
+           [text]="password.errors['required']?'password requis' :''"></p-message>
+</span></div><br>
+<div [hidden]="!visible">
+<span class="ui-float-label">
+    <input id="float-input6" [(ngModel)]="confirmmdp" pattern="{{password.value}}" required #pwd="ngModel" type="password" size="30" pPassword>
+    <label for="float-input">confirmer votre mot de passe</label>
+  <p-message severity="error" *ngIf="pwd.invalid && (pwd.touched || pwd.dirty)"
+             [text]="pwd.errors['required']?'password requis' :''"></p-message>
+</span></div><br>
+<p-dropdown placeholder="Selectionner role" [options]="roles" optionLabel="role" [(ngModel)]="selectedRole"></p-dropdown><br><br>
+<button (click)="ajouter()"  *ngIf="visible" class="ui-button-success" [disabled]="nom.invalid || prenom.invalid || email.invalid || username.invalid || password.invalid || pwd.invalid ">ADD USER !!</button>
+<button (click)="modifier()" *ngIf="!visible" class="ui-button-warning" [disabled]="nom.invalid || prenom.invalid || email.invalid || username.invalid ">MODIFY USER !!</button>
+

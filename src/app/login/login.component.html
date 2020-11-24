@@ -1,0 +1,19 @@
+
+<table>
+  <tr>
+    <td>Nom d'utilisateur</td>
+    <td><input pInputText [(ngModel)]="user.username"></td>
+  </tr>
+
+  <tr>
+    <td>Mot de passe</td>
+    <td><input pInputText type="password" [(ngModel)]="user.password"></td>
+  </tr>
+
+  <tr>
+    <td></td>
+    <td><button pButton class="ui-button-success" label="Se Connecter" (click)="authenticate()"></button></td>
+  </tr>
+</table>
+
+<table

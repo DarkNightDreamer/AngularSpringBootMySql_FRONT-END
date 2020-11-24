@@ -1,0 +1,26 @@
+<button pButton label="New User" class="ui-button-success btnadd" icon="pi pi-plus" routerLink="/new-user" ></button>
+<p-table [value]="users">
+  <ng-template pTemplate="header">
+    <tr>
+      <th>Nom</th>
+      <th>Prenom</th>
+      <th>Email</th>
+      <th>Nom d'utlisateur</th>
+      <th>Role</th>
+      <th colspan="2">Opération</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-user>
+    <tr>
+    <td>{{user.nom}}</td>
+    <td>{{user.prenom}}</td>
+    <td>{{user.email}}</td>
+    <td>{{user.username}}</td>
+    <td>{{user.role}}</td>
+      <td><button pButton icon="pi pi-trash" class="ui-button-danger" (click)="supprimer(user)"></button></td>
+      <td><button pButton icon="pi pi-pencil" class="ui-button-warning" (click)="editer(user)"></button></td>
+
+    </tr>
+  </ng-template>
+</p-table>
+<p-confirmDialog acceptLabel="oui" rejectLabel="non"></p-confirmDialog>
